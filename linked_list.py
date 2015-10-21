@@ -3,8 +3,9 @@ class Node:
     _value = None
     _next = None
 
-    def __init__(self, value):
-        self._value = value
+    def __init__(self, initial=None):
+        if initial:
+            self._value = initial
 
     def get_next(self):
         return self._next
@@ -28,3 +29,19 @@ class Node:
 
     def __repr__(self):
         return self.__str__()
+
+    def head(self):
+        return self._value
+
+    def tail(self):
+        curr = self
+        while curr.hasnext():
+            curr = curr.get_next()
+        return curr._value
+
+    def length(self):
+        cnt = 1
+        while self.hasnext():
+            self = self.get_next()
+            cnt += 1
+        return cnt
